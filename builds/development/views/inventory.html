@@ -1,0 +1,21 @@
+<!--Created by Tarnos on 2016-12-26.
+-->
+<div class="row">
+    <div class="col-xs-12">
+        <h3 class="customHeader text-center">Inventory</h3>
+        <div class="borderAll vh30" id="inventory">
+            <div class="btn-group btn-group-justified">
+                <label class="btn btn-primary btn-xs" ng-model="inventorySortModel.type" uib-btn-radio="'all'" uib-uncheckable="uncheckable">All</label>
+                <label class="btn btn-primary btn-xs" ng-model="inventorySortModel.type" uib-btn-radio="'weapon'" uib-uncheckable="uncheckable">Weapon</label>
+                <label class="btn btn-primary btn-xs" ng-model="inventorySortModel.type" uib-btn-radio="'armor'" uib-uncheckable="uncheckable">Armor</label>
+                <label class="btn btn-primary btn-xs" ng-model="inventorySortModel.type" uib-btn-radio="'accessory'" uib-uncheckable="uncheckable">Accessory</label>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 inventory-padding" ng-repeat="invItem in inventory.items track by $index" ng-if="invItem.type == inventorySortModel.type || inventorySortModel.type == 'all'">
+                <div class="background item">
+                    <img class="{{('sprite sprite-' + invItem.img)}}" ng-click="inventory.equip(invItem.id)" uib-popover-html="itemTooltip(invItem)" popover-append-to-body="true" popover-trigger="'mouseenter'" />
+                    <div class="smallBox" ng-show="!invItem.isEquipped">{{invItem.ilvl}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

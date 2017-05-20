@@ -1,0 +1,41 @@
+//
+   Created by Tarnos on 2016-12-29.
+
+div.col-xs-12
+    div.row(ng-controller="BattleCtrl")
+        div.col-xs-12.text-center
+            h4 {{Game.getLocationName()}} -
+                small {{Game.getSubLocationName()}}
+        div.col-xs-12.center-block
+            div.row.vh20.enemyCenter
+                div.enemy.col-xs-2(ng-class="{'deadEnemy': enemy.isDead}", ng-click="battle.selectEnemy($index)", ng-repeat="enemy in enemies track by $index")
+                    span.text(ng-show="enemy.test") -{{enemy.displayDamage}}
+                    div.row(ng-class="{'selectedEnemy': $index === battle.selectedEnemy}")
+                        div.col-xs-12
+                            uib-progressbar(max="enemy.maxHealth", value="enemy.health", type="success")
+                                span.progress-value(style="color:black; white-space:nowrap;") {{enemy.health}} / {{enemy.maxHealth}}
+                        div.col-xs-12
+                            uib-progressbar(max="enemy.attackSpeed", value="enemy.currentSpeed", animate="false", type="warning")
+                    div.row
+                        div.col-xs-12
+                            p.text-center {{enemy.name}}
+            div.row.vh20
+                div.col-xs-12.col-md-8.col-md-offset-2
+                    div.row
+                        div.col-xs-12
+                            p.text-center {{player.name}}({{player.level}})
+                    div.row
+                        div.col-xs-4.col-xs-offset-4
+                            uib-progressbar(max="player.maxExperience", value="player.experience")
+                                span.progress-value(style="color:black; white-space:nowrap;") {{player.experience}} / {{player.maxExperience}}
+                    div.row
+                        div.col-xs-4.col-xs-offset-4
+                            uib-progressbar(max="player.getMaxHealth()", value="player.health", type="success")
+                                span.progress-value(style="color:black; white-space:nowrap;") {{player.health}} / {{player.getMaxHealth()}}
+                    div.row
+                        div.col-xs-4.col-xs-offset-4
+                            uib-progressbar(max="player.attackSpeed", value="player.currentSpeed", animate="false", type="warning")
+                                span.progress-value(style="color:black; white-space:nowrap;")
+                div.col-xs-4.col-xs-offset-4(ng-show="!isAuto")
+                    button(ng-click="startBattle()") Attack
+

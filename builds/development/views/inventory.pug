@@ -1,0 +1,16 @@
+//
+   Created by Tarnos on 2016-12-26.
+
+div.row
+    div.col-xs-12
+        h3.customHeader.text-center Inventory
+        div#inventory.borderAll.vh30
+            div.btn-group.btn-group-justified
+                label.btn.btn-primary.btn-xs(ng-model="inventorySortModel.type", uib-btn-radio="'all'", uib-uncheckable="uncheckable") All
+                label.btn.btn-primary.btn-xs(ng-model="inventorySortModel.type", uib-btn-radio="'weapon'", uib-uncheckable="uncheckable") Weapon
+                label.btn.btn-primary.btn-xs(ng-model="inventorySortModel.type", uib-btn-radio="'armor'", uib-uncheckable="uncheckable") Armor
+                label.btn.btn-primary.btn-xs(ng-model="inventorySortModel.type", uib-btn-radio="'accessory'", uib-uncheckable="uncheckable") Accessory
+            div.col-xs-6.col-sm-4.col-md-3.col-lg-2.inventory-padding(ng-repeat="invItem in inventory.items track by $index", ng-if="invItem.type == inventorySortModel.type || inventorySortModel.type == 'all'")
+                div.background.item
+                    img(class="{{('sprite sprite-' + invItem.img)}}", ng-click="inventory.equip(invItem.id)", uib-popover-html='itemTooltip(invItem)', popover-append-to-body="true", popover-trigger="'mouseenter'")
+                    div.smallBox(ng-show="!invItem.isEquipped") {{invItem.ilvl}}

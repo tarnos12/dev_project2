@@ -1,0 +1,11 @@
+//
+   Created by Tarnos on 2016-12-29.
+
+
+
+div.row
+    div.col-xs-6(ng-repeat="(key, type) in profession")
+        h1.text-center {{key}}
+        div.row
+            div.col-xs-4(ng-repeat="resource in type.resources")
+                p {{resource.name}}: {{resource.amount}}

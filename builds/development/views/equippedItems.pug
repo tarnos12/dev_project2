@@ -1,0 +1,15 @@
+//
+   Created by Tarnos on 2017-02-26.
+
+div.col-xs-10.col-xs-offset-1
+    div.row
+        h3.customHeader.text-center Equipment
+    div.row
+        div.col-xs-12.borderAll.vh30
+            div.eqItem(ng-repeat="(key, eq) in inventory.equippedItems", id="{{key}}")
+                div.background
+                    div(ng-show="!eq.isEquipped", uib-popover="{{key | camelCase}}", popover-append-to-body="true", popover-trigger="'mouseenter'")
+                    img(ng-show="eq.isEquipped", ng-click="inventory.unequip(eq)", class="{{('sprite sprite-' + eq.img)}}", uib-popover-html='itemTooltip(eq)', popover-append-to-body="true", popover-trigger="'mouseenter'")
+                    img(ng-hide="eq.isEquipped", ng-src="../img/icons/{{key}}.png")
+                div.smallBox(ng-show="eq.isEquipped") {{eq.ilvl}}
+    button.btn.btn-primary.btn-xs(ng-click="addRandomItem('equipment', 5, 50)", style="position:absolute; left:5px; top:50px") Random Item

@@ -1,0 +1,39 @@
+//
+   Created by Tarnos on 2016-12-26.
+div.row
+    div.col-xs-4
+        h3.text-center Stats
+            div.col-xs-5
+                span Points: {{player.statPoints}}
+        div.row
+            div.col-xs-2.col-xs-offset-3
+                img(ng-src="img/baseStat.png", uib-popover="Base", popover-trigger="'mouseenter'")
+            div.col-xs-2
+                img(ng-src="img/equipStat.png", uib-popover="Equip", popover-trigger="'mouseenter'")
+            div.col-xs-2
+                img(ng-src="img/totalStat.png", uib-popover="Total", popover-trigger="'mouseenter'")
+        div.row(ng-repeat="(key, stat) in player.baseStats")
+            div.col-xs-3
+                img(ng-src="img/{{key | camelCase}}.png", uib-popover="{{key}}", popover-trigger="'mouseenter'")
+            div.col-xs-2
+                span {{stat}}
+            div.col-xs-2
+                span {{player.equippedStat(key)}}
+            div.col-xs-2
+                span {{player.totalStat(key)}}
+            div.col-xs-1
+                button(ng-click="player.addStat(key, 1)", ng-show="player.statPoints") +
+    div.col-xs-8(ng-controller="InventoryController")
+        button(ng-click="addRandomItem('equipment', 5, 50)") Random Item
+        div.row
+            div.col-xs-4.humanShape
+                h3 Equipped items
+                div.row
+                    div.col-xs-8(ng-repeat="(key, eq) in inventory.equippedItems")
+                        div.background(ng-show="!eq.isEquipped", uib-popover="{{key | camelCase}}", popover-append-to-body="true", popover-trigger="'mouseenter'")
+                        img(ng-show="eq.isEquipped", ng-click="inventory.unequip(eq)", class="{{('sprite sprite-' + eq.img + '_' + eq.rarity)}}", uib-popover-html='itemTooltip(eq)', popover-append-to-body="true", popover-trigger="'mouseenter'")
+            div.col-xs-8.overflow-y#inventory.border
+                div.row
+                    div.col-xs-3(ng-repeat="invItem in inventory.items track by $index")
+                        div.background.item
+                            img(class="{{('sprite sprite-' + invItem.img + '_' + invItem.rarity)}}", ng-click="inventory.equip(invItem.id)", uib-popover-html='itemTooltip(invItem)', popover-append-to-body="true", popover-trigger="'mouseenter'")

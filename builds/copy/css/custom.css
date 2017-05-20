@@ -1,0 +1,57 @@
+html, body, .container-fluid {
+    height:100vh;
+}
+span{
+    font-size: 1.3em;
+}
+.background{
+    width: 64px;
+    height: 64px;
+    background: url(../img/itemBackground.png), url(../img/itemForeground.png) no-repeat;
+}
+.selectedEnemy{
+    border: 1px solid;
+}
+.item{
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+.vh20{
+    height: 10vh;
+}
+#inventory{
+    height:30vh;
+}
+#topRow{
+    height: 5vh;
+}
+#mainRow{
+    height:50vh;
+}
+#ngView, #gameLog{
+    height: 40vh;
+}
+#navBarRow{
+    height: 5vh;
+}
+.overflow-y{
+    overflow-y: auto;
+}
+.border{
+    border: 20px solid;
+    border-image: url(../img/boxNormal.png) 20 repeat;
+}
+.glyphicon{
+    font-size: 1.4em;
+}
+.vis-hidden{
+    visibility: hidden;
+}
+.progress-value{
+    position:absolute;
+    left: 0;
+    right: 0;
+}
+.popover-content {
+    white-space: nowrap;
+}

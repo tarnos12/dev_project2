@@ -1,0 +1,54 @@
+<!--Created by Tarnos on 2016-12-26.-->
+<div class="row">
+    <div class="col-xs-4">
+        <h3 class="text-center">Stats<div class="col-xs-5"><span>Points: {{player.statPoints}}</span></div></h3>
+        <div class="row">
+            <div class="col-xs-2 col-xs-offset-3">
+                <img ng-src="img/baseStat.png" uib-popover="Base" popover-trigger="'mouseenter'" />
+            </div>
+            <div class="col-xs-2">
+                <img ng-src="img/equipStat.png" uib-popover="Equip" popover-trigger="'mouseenter'" />
+            </div>
+            <div class="col-xs-2">
+                <img ng-src="img/totalStat.png" uib-popover="Total" popover-trigger="'mouseenter'" />
+            </div>
+        </div>
+        <div class="row" ng-repeat="(key, stat) in player.baseStats">
+            <div class="col-xs-3">
+                <img ng-src="img/{{key | camelCase}}.png" uib-popover="{{key}}" popover-trigger="'mouseenter'" />
+            </div>
+            <div class="col-xs-2"><span>{{stat}}</span>
+            </div>
+            <div class="col-xs-2"><span>{{player.equippedStat(key)}}</span>
+            </div>
+            <div class="col-xs-2"><span>{{player.totalStat(key)}}</span>
+            </div>
+            <div class="col-xs-1">
+                <button ng-click="player.addStat(key, 1)" ng-show="player.statPoints">+</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-8" ng-controller="InventoryController">
+        <button ng-click="addRandomItem('equipment', 5, 50)">Random Item</button>
+        <div class="row">
+            <div class="col-xs-4 humanShape">
+                <h3>Equipped items</h3>
+                <div class="row">
+                    <div class="col-xs-8" ng-repeat="(key, eq) in inventory.equippedItems">
+                        <div class="background" ng-show="!eq.isEquipped" uib-popover="{{key | camelCase}}" popover-append-to-body="true" popover-trigger="'mouseenter'"></div>
+                        <img class="{{('sprite sprite-' + eq.img + '_' + eq.rarity)}}" ng-show="eq.isEquipped" ng-click="inventory.unequip(eq)" uib-popover-html="itemTooltip(eq)" popover-append-to-body="true" popover-trigger="'mouseenter'" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-8 overflow-y border" id="inventory">
+                <div class="row">
+                    <div class="col-xs-3" ng-repeat="invItem in inventory.items track by $index">
+                        <div class="background item">
+                            <img class="{{('sprite sprite-' + invItem.img + '_' + invItem.rarity)}}" ng-click="inventory.equip(invItem.id)" uib-popover-html="itemTooltip(invItem)" popover-append-to-body="true" popover-trigger="'mouseenter'" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

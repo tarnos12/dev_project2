@@ -1,0 +1,49 @@
+<!--Created by Tarnos on 2016-12-29.-->
+<div class="col-xs-4 overflow-y" id="gameLog" style="border: 1px dotted">
+    <h3 class="text-center">Debug log</h3>
+    <div class="row" ng-repeat="val in log.logs track by $index">
+        <div class="col-xs-12 text-center"><small>{{val}}</small>
+        </div>
+    </div>
+</div>
+<div class="col-xs-8">
+    <div class="row" ng-controller="BattleCtrl">
+        <div class="col-xs-12">
+            <div class="row vh20">
+                <div ng-class="{'col-xs-4': enemies.length === 3, 'col-xs-6': enemies.length === 2, 'col-xs-6 col-xs-offset-3': enemies.length === 1, 'selectedEnemy': $index === battle.selectedEnemy}" ng-click="battle.selectEnemy($index)" ng-repeat="enemy in enemies track by $index">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <uib-progressbar max="enemy.maxHealth" value="enemy.health"><span class="progress-value" style="color:black; white-space:nowrap">{{enemy.health}} / {{enemy.maxHealth}}</span>
+                            </uib-progressbar>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <p class="text-center">{{enemy.name}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row vh20">
+                <div class="col-xs-12">
+                    <p class="text-center">Player</p>
+                </div>
+                <div class="col-xs-4 col-xs-offset-4" ng-show="!isAuto">
+                    <button ng-click="startBattle()">Attack</button>
+                </div>
+            </div>
+        </div>
+        <!---->
+        <!--div.col-xs-4.col-xs-->
+        <!--    p.text-center Player-->
+        <!--div.col-xs-4(ng-hide="fighting")-->
+        <!--    button(ng-click="start()") Start-->
+        <!--div.col-xs-4(ng-show="fighting")-->
+        <!--    button(ng-click="attack()") Attack-->
+        <!--div.col-xs-4-->
+        <!--    div.row(ng-repeat="enemy in enemies track by $index")-->
+        <!--        div.col-xs-6-->
+        <!--            p {{enemy.name}}-->
+        <!--            p {{enemy.health}}-->
+    </div>
+</div>

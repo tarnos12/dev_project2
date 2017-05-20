@@ -1,0 +1,92 @@
+doctype html
+html
+    head
+        meta(charset="utf-8")
+        title Legend of the Fallen Warrior
+        link(rel="stylesheet", href="css/bootstrap.css")
+        link(rel="stylesheet", href="css/font-awesome.css")
+        link(rel="stylesheet", href="css/custom.css")
+        link(rel="stylesheet", href="css/spritesheet.css")
+        script(src="libs/jquery.js")
+        script(src="libs/bootstrap.js")
+        script(src="libs/angular.js")
+        script(src="libs/angular-touch.js")
+        script(src="libs/angular-animate.js")
+        script(src="libs/ui-bootstrap-tpls-2.3.2.js")
+        script(src="libs/angular-route.js")
+        //base(href="/")
+    //add global controller here, if not set in provider
+    body(ng-app="lotfw", ng-cloak, ng-controller="MainController")
+        div.container-fluid
+            div.row#topRow
+                div.col-xs-3
+                    span Level: {{player.level}}
+                    button(ng-click="player.addExperience(100)") test
+                div.col-xs-9.text-center
+                    uib-progressbar(max="player.maxExperience", value="player.experience")
+                        span.progress-value(style="color:black; white-space:nowrap;") {{player.experience}} / {{player.maxExperience}}
+                    div.row
+            div.row.jumbotron#mainRow(ng-show="game.isLoaded")
+                div.col-xs-12
+                    div.row(ng-include="'views/mainView.html'")
+            div.row#ngView
+                div.col-xs-12#views(ng-view)
+
+            //Fixed nav bar bottom with container to center it.
+
+            nav.navbar.navbar-default.navbar-fixed-bottom#navBarRow(role="navbar")
+                div.container
+                    div.navbar-header(style="padding-bottom:20px;")
+                        a.navbar-brand(href="#!/changelog")
+                            span
+                                | Legend of the Fallen Warrior
+                        button.navbar-toggle(data-toggle="collapse", data-target="#gameNavbar")
+                            i.glyphicon.glyphicon-menu-hamburger
+                    div.collapse.navbar-collapse#gameNavbar
+                        ul.nav.navbar-nav(ng-repeat="item in gameViews")
+                            li
+                                a(href="#!/{{item.href}}",
+                                ng-mouseenter="item.hovering=true",
+                                ng-mouseleave="item.hovering=false")
+                                    i(ng-class="isHovering(item)",
+                                    data-toggle="tooltip",
+                                    data-placement="auto right",
+                                    title="{{item.name}}")
+                                    span.hidden-sm.hidden-xs &nbsp{{item.name | camelCase}}
+                        ul
+                            li.list-unstyled
+                                button.btn.btn-default.pull-right(ng-click="game.startGame()") Menu
+
+                    div(ng-include="'views/introScreen.html'")
+        script
+            | $(document).ready(function(){
+            |             $('[data-toggle="tooltip"]').tooltip({delay:{show: 150, hide: 0}});
+            |             });
+        script(src="js/app.js")
+        //Controllers
+        script(src="js/controllers/mainController.js")
+        script(src="js/controllers/playerController.js")
+        script(src="js/controllers/spellsController.js")
+        script(src="js/controllers/creditsController.js")
+        script(src="js/controllers/optionsController.js")
+        script(src="js/controllers/professionController.js")
+        script(src="js/controllers/inventoryController.js")
+        script(src="js/controllers/battleController.js")
+        //Services
+        script(src="js/services/game.js")
+        script(src="js/services/player.js")
+        script(src="js/services/spells.js")
+        script(src="js/services/itemTable.js")
+        script(src="js/services/itemDrop.js")
+        script(src="js/services/equipment.js")
+        script(src="js/services/inventory.js")
+        script(src="js/services/options.js")
+        script(src="js/services/credits.js")
+        script(src="js/services/enemies.js")
+        script(src="js/services/gameLog.js")
+        script(src="js/services/enemyList.js")
+        script(src="js/services/battle.js")
+        script(src="js/services/professions/mining.js")
+        script(src="js/services/professions/herbalism.js")
+        //Filters
+        script(src="js/filters/custom.js")

@@ -1,0 +1,37 @@
+//
+   Created by Tarnos on 2016-12-29.
+div.col-xs-4.overflow-y#gameLog(style="border: 1px dotted")
+    h3.text-center Debug log
+    div.row(ng-repeat="val in log.logs track by $index")
+        div.col-xs-12.text-center
+            small {{val}}
+div.col-xs-8
+    div.row(ng-controller="BattleCtrl")
+        div.col-xs-12
+            div.row.vh20
+                div(ng-class="{'col-xs-4': enemies.length === 3, 'col-xs-6': enemies.length === 2, 'col-xs-6 col-xs-offset-3': enemies.length === 1, 'selectedEnemy': $index === battle.selectedEnemy}", ng-click="battle.selectEnemy($index)", ng-repeat="enemy in enemies track by $index")
+                    div.row
+                        div.col-xs-12
+                            uib-progressbar(max="enemy.maxHealth", value="enemy.health")
+                                span.progress-value(style="color:black; white-space:nowrap;") {{enemy.health}} / {{enemy.maxHealth}}
+                    div.row
+                        div.col-xs-12
+                            p.text-center {{enemy.name}}
+            div.row.vh20
+                div.col-xs-12
+                    p.text-center Player
+                div.col-xs-4.col-xs-offset-4(ng-show="!isAuto")
+                    button(ng-click="startBattle()") Attack
+
+        //
+        //div.col-xs-4.col-xs
+        //    p.text-center Player
+        //div.col-xs-4(ng-hide="fighting")
+        //    button(ng-click="start()") Start
+        //div.col-xs-4(ng-show="fighting")
+        //    button(ng-click="attack()") Attack
+        //div.col-xs-4
+        //    div.row(ng-repeat="enemy in enemies track by $index")
+        //        div.col-xs-6
+        //            p {{enemy.name}}
+        //            p {{enemy.health}}

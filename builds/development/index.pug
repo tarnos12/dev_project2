@@ -1,0 +1,138 @@
+doctype html
+html(ng-app="lotfw")
+    head
+        meta(charset="utf-8")
+        title Legend of the Fallen Warrior
+        link(rel="stylesheet", href="css/bootstrap.css")
+        link(rel="stylesheet", href="css/font-awesome.css")
+        link(rel="stylesheet", href="css/custom.css")
+        link(rel="stylesheet", href="css/spritesheet.css")
+        script(src="libs/jquery.js")
+        script(src="libs/bootstrap.js")
+        script(src="libs/angular.js")
+        script(src="libs/angular-touch.js")
+        script(src="libs/angular-animate.js")
+        script(src="libs/ui-bootstrap-tpls-2.3.2.js")
+        script(src="libs/angular-route.js")
+        script(src="libs/create-js.min.js")
+        script(src="libs/xls.js")
+        //base(href="/")
+    //add global controller here, if not set in provider
+    body(ng-cloak, ng-controller="MainController")
+        div.container.border
+            div.row
+                div.col-xs-12
+                    canvas-test
+            div.row(ng-show="Game.isLoaded")
+                div.col-xs-12(ng-include="'views/battleView.html'")
+                    //div.row(ng-include="'views/mainView.html'")
+            div.row
+                div.col-xs-12
+                    div.row
+                        div.col-xs-12
+                            uib-tabset(active="'Inventory'", justified="true", type="pills")
+                                uib-tab.btn-xs(index="'Inventory'", heading="Inventory")
+                                    div.row
+                                        div.col-xs-5(ng-controller="InventoryController", ng-include="'views/inventory.html'")
+                                        div.col-xs-3(ng-controller="PlayerController")
+                                            div.row(ng-include="'views/stats.html'")
+                                        div.col-xs-4(ng-controller="InventoryController")
+                                            div.row(ng-include="'views/equippedItems.html'")
+                                uib-tab.btn-xs(index="'Spells'", heading="Spells") Spells view
+                                uib-tab.btn-xs(index="'Skills'", heading="Skills") Skills view
+                                uib-tab.btn-xs(index="'Perks'", heading="Perks") Perks view
+                                uib-tab.btn-xs(index="'Quest'", heading="Quest") Quest view
+                                uib-tab.btn-xs(index="'Craft'", heading="Craft") Craft view
+                    div.row
+                        div.col-xs-12#footer(ng-class="{'footerActive': footer.isVisible}")
+                            button.btn.btn-primary.btn-xs.center-block(type="button", ng-model="footer.isVisible", uib-btn-checkbox, btn-checkbox-true="1", btn-checkbox-false="0")
+                                span(ng-class="{'glyphicon glyphicon-menu-up': !footer.isVisible, 'glyphicon glyphicon-menu-down': footer.isVisible}")
+                            div.row(ng-include="'views/debug.html'")
+
+
+            //div.row#middleRow.text-center
+            //    button(ng-click="Battle.init()") Start battle
+            //    button(ng-click="Game.prevEnemy()") Prev Enemy
+            //    button(ng-click="Game.nextEnemy()") Next Enemy
+            //    span Current Enemy: {{Game.getCurrentEnemy().name}}
+
+            //ngView used with routeProvider
+            //div.row#ngView
+            //    div.col-xs-10.col-xs-offset-1#views(ng-view)
+
+            //Fixed nav bar bottom with container to center it.
+
+            //nav.navbar.navbar-default.navbar-fixed-bottom#navBarRow(role="navbar")
+            //    div.container
+            //        div.navbar-header(style="padding-bottom:20px;")
+            //            a.navbar-brand(href="#!/changelog")
+            //                span
+            //                    | Legend of the Fallen Warrior
+            //            button.navbar-toggle(data-toggle="collapse", data-target="#gameNavbar")
+            //                i.glyphicon.glyphicon-menu-hamburger
+            //        div.collapse.navbar-collapse
+            //            ul.nav.navbar-nav(ng-repeat="item in gameViews")
+            //                li
+            //                    a(href="#!/{{item.href}}",
+            //                    ng-mouseenter="item.hovering=true",
+            //                    ng-mouseleave="item.hovering=false")
+            //                        i(ng-class="isHovering(item)",
+            //                        data-toggle="tooltip",
+            //                        data-placement="auto right",
+            //                        title="{{item.name}}")
+            //                        span.hidden-md.hidden-sm.hidden-xs &nbsp{{item.name | camelCase}}
+            //            ul
+            //                li.list-unstyled
+            //                    button.btn.btn-default.pull-right(ng-click="Game.startGame()") Menu
+            //
+            //        div(ng-include="'views/introScreen.html'")
+        script
+            | $(document).ready(function(){
+            |             $('[data-toggle="tooltip"]').tooltip({delay:{show: 150, hide: 0}});
+            |             });
+
+
+        // *** App *** //
+
+        script(src="js/app.js")
+
+        // *** Controllers *** //
+
+        script(src="js/controllers/mainController.js")
+        script(src="js/controllers/playerController.js")
+        script(src="js/controllers/inventoryController.js")
+        script(src="js/controllers/skillController.js")
+        script(src="js/controllers/battleController.js")
+        script(src="js/controllers/canvasController.js")
+
+        // *** Services *** //
+
+        // Canvas
+        script(src="js/services/loaderSvc.js")
+        script(src="js/uiClasses/background.js")
+
+        // Game
+        script(src="js/services/game.js")
+        script(src="js/services/gameLog.js")
+        script(src="js/services/battle.js")
+        script(src="js/services/itemTable.js")
+        script(src="js/services/itemDrop.js")
+        script(src="js/services/entity.js")
+
+        // Enemies
+        script(src="js/services/enemies/enemies.js")
+        script(src="js/services/enemies/enemyList.js")
+        script(src="js/services/locations.js")
+
+        // Player
+        script(src="js/services/player/player.js")
+        script(src="js/services/player/components/inventory.js")
+        script(src="js/services/player/components/skills.js")
+
+
+        // *** Directives *** //
+        script(src="js/directives/canvas.js")
+
+
+        // *** Filters *** //
+        script(src="js/filters/custom.js")

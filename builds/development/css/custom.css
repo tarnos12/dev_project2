@@ -1,0 +1,275 @@
+html, body, .container-fluid {
+    height:100vh;
+}
+body{
+    background-color: #188CBA;
+}
+.container, .container-fluid {
+    background-color: #009688;
+    background-clip: padding-box;
+    padding-top: 10px;
+}
+span{
+    font-size: 1.3em;
+}
+p{
+    font-size: 1.4em;
+}
+.inventory-padding{
+    padding-left: 2px;
+}
+a{
+    background-color: #337ab7;
+    color: white;
+}
+a:focus{
+    background-color: #286090;
+}
+.background{
+    background: url(../img/itemBackground.png), url(../img/itemForeground.png) no-repeat;
+}
+.selectedEnemy{
+    border: 1px solid;
+    margin: -1px;
+    /* negative margin due to border which breaks columns*/
+}
+.item{
+    margin-top: 3px;
+    margin-bottom: 3px;
+    width: 64px;
+    height: 64px;
+    position:relative;/* nested element has position absolute */
+}
+.vh20{
+    height: 20vh;
+}
+.vh30{
+    height:30vh;
+}
+.vh40{
+    height: 40vh;
+}
+.tab-content{
+    margin-bottom: 30px;
+}
+.margin-0{
+    margin: 0;
+}
+#footer{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: #B2DFDB;
+    z-index: 5;
+    height:5vh;
+    overflow: hidden;
+}
+.footerActive{
+    height: 45vh !important;
+}
+#inventory{
+    margin-bottom:5vh;
+    overflow-x:hidden;
+    overflow-y: auto;
+}
+#middleRow{
+    height: 5vh;
+    padding-top:10px;
+}
+.borderAll{
+    border-width: 0 1px 1px 1px;
+    border-style: solid;
+    border-color: #BDBDBD;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+    overflow: hidden;
+}
+#ngView{
+    height: 40vh;
+}
+#gameLog{
+    height: 35vh;
+}
+#navBarRow{
+    height: 5vh;
+}
+.overflow-y{
+    overflow-y: auto;
+}
+.border{
+    border: 20px solid;
+    -moz-border-image: url(../img/boxNormal.png) 20 20 20 20 repeat repeat;
+    -webkit-border-image: url(../img/boxNormal.png) 20 20 20 20 repeat repeat;
+    -o-border-image: url(../img/boxNormal.png) 20 20 20 20 repeat repeat;
+}
+.border-bottom-0{
+    border-bottom:0;
+    margin-top: -10px;
+}
+.border-top-0{
+    border-top:0;
+    margin-bottom: -10px;
+}
+.glyphicon{
+    font-size: 1.4em;
+}
+.vis-hidden{
+    visibility: hidden;
+}
+.progress-value{
+    position:absolute;
+    left: 0;
+    right: 0;
+}
+.popover-content {
+    white-space: nowrap;
+}
+
+/* Progress bar custom changes */
+
+.progress{
+    height: 12px;
+    margin-bottom: 5px;
+}
+.progress-bar{
+    font-size: 8px;
+    line-height: 12px;
+}
+
+/* Enemy, battle screen. Centering + opacity for dead enemies */
+.enemy {
+    margin-bottom: 3px;;
+    display: inline-block;
+    float: none;
+}
+
+.deadEnemy {
+    opacity: 0.5;
+}
+
+.enemyCenter{
+    width: 100%;
+    margin: 10px auto;
+    position: relative;
+    text-align: center;
+}
+
+
+
+/* Animations */
+
+@keyframes test {
+    from {
+        bottom: 40px;
+        opacity: 1;
+    }
+    to {
+        bottom: 100px;
+        opacity: 0;
+    }
+}
+
+.text {
+    position: absolute;
+    bottom: 40px;
+    color: red;
+    right: 0px;
+    animation-name: test;
+    animation-duration: 0.5s;
+    animation-direction: reverse;
+}
+
+/* Equipment slots */
+
+/* box with item level on top of an image */
+.smallBox{
+    position: absolute;
+    z-index: 1;
+    bottom: 0px;
+    right: 0px;
+    color: white;
+    font-size: 11px;
+    line-height: 1em;
+    width: 10px;
+    text-align: center;
+    background-color: grey;
+}
+.nav > li.active > a{
+    background-color: #286090 !important;
+}
+.eqItem{
+    position:absolute;
+}
+#head{
+    top:10px;
+    left: 40%;
+}
+
+#amulet{
+    top:10px;
+    right: 5%;
+}
+
+#weapon{
+    top:30%;
+    left:10%;
+}
+
+#chest{
+    top:30%;
+    left:40%;
+}
+
+#shield{
+    top:30%;
+    right:5%;
+}
+
+#legs{
+    top:55%;
+    left:40%;
+}
+
+#ring{
+    top:55%;
+    left:10%;
+}
+
+#boots{
+    bottom:0;
+    left: 40%;
+}
+
+/* Custom headers */
+
+.customHeader{
+    background-color:#FFC107;
+    color:#212121;
+    margin-bottom:0;
+}
+
+
+
+/* Stat text color */
+
+.negativeStat{
+    color: #ab1af6;
+    font-weight: 700;
+}
+.positiveStat{
+    color: #172edb;
+    font-weight: 700;
+}
+
+.underline{
+    border-bottom: 1px solid;
+    height: 25px;
+    margin-top: 10px;
+}
+.radiusLeft{
+    border-bottom-left-radius: 13px;
+}
+.radiusRight{
+    border-bottom-right-radius: 13px;
+}

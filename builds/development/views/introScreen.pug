@@ -1,0 +1,13 @@
+//
+   Created by Tarnos on 2016-12-26.
+
+div.row(ng-hide="Game.isLoaded")
+    div.col-xs-6.col-xs-offset-3
+        div.jumbotron
+            h3.text-center {{game.name}}
+            p {{player.name}} level: {{player.level}} experience: {{player.experience}} / {{player.maxExperience}}
+                form(ng-submit="player.changeName(Game.inputName)")
+                    input(type="text", ng-model="game.inputName")
+                    //change ng-model to an object
+                    input(type="submit", value="Change")
+                button(ng-click="Game.startGame()") Start

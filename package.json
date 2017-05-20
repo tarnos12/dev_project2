@@ -1,0 +1,29 @@
+{
+  "name": "lotfw3",
+  "version": "1.0.0",
+  "description": "Html5 rpg game",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-git": "^2.0.1"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.5",
+    "gulp": "^3.9.1",
+    "gulp-html-prettify": "0.0.1",
+    "gulp-pug": "^3.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tarnos12/Lotfw3.git"
+  },
+  "author": "Tarnos <tarnos7@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tarnos12/Lotfw3/issues"
+  },
+  "homepage": "https://github.com/tarnos12/Lotfw3#readme"
+}

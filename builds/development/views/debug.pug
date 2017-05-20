@@ -1,0 +1,11 @@
+//
+   Created by Tarnos on 2017-02-25.
+
+
+div.col-xs-12
+    div.row
+        div.col-xs-12
+            h4.customHeader.margin-0.text-center Debug Log
+    div.row
+        div.col-xs-12.text-center.overflow-y
+            p(ng-repeat="val in log.logs track by $index") {{val}}

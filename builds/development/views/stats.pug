@@ -1,0 +1,28 @@
+//
+   Created by Tarnos on 2017-02-24.
+
+div.col-xs-12
+    div.row
+       h3.customHeader.text-center Stats
+    div.row
+        div.col-xs-12.borderAll.vh30
+            div.row
+                div.col-xs-7.col-xs-offset-1.underline.radiusLeft
+                    p Level
+                div.col-xs-3.underline.radiusRight
+                    p.pull-right {{player.level}}
+            div.row
+                div.col-xs-7.col-xs-offset-1.underline.radiusLeft
+                    p Experience
+                div.col-xs-3.underline.radiusRight
+                    p.pull-right {{player.experience}}/{{player.maxExperience}}
+            div.row
+                div.col-xs-7.col-xs-offset-1.underline.radiusLeft
+                    p Health:
+                div.col-xs-3.underline.radiusRight
+                    p.pull-right {{player.health}}/{{player.getMaxHealth()}}
+            div.row(ng-repeat="(key, stat) in player.baseStats")
+                div.col-xs-7.col-xs-offset-1.underline.radiusLeft
+                    p(uib-popover="{{key | camelCase}}", popover-trigger="'mouseenter'") {{key | camelCase}}
+                div.col-xs-3.underline.radiusRight
+                    p.pull-right(uib-popover-html='statTooltip(key)', popover-trigger="'mouseenter'", ng-class="stat + player.equippedStat(key) < player.totalStat(key) ? 'negativeStat' : 'positiveStat'") {{player.totalStat(key)}}
